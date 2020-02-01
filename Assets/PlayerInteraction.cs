@@ -6,34 +6,44 @@ public class PlayerInteraction : MonoBehaviour
 {
     private Vector3 targetPosition = new Vector3();
     private Interactable targetInteractable;
-    private ParticleSystem particles;
+    public ParticleSystem particles;
+
+    public GameObject stabilisedChild;
+    public ChargeBar chargeBar;
 
     private float progress = 0;
 
     // Start is called before the first frame update 
     void Start()
     {
-        particles = gameObject.GetComponent<ParticleSystem>();
     }
 
-    void FixedUpdate()
+    void Update()
     {
+        stabilisedChild.transform.rotation = Quaternion.identity;
         if(Input.GetButton("Fire2") && targetInteractable != null) {
             Vector3 aim = targetPosition - gameObject.transform.position;
             if(particles != null) {
                 var sh = particles.shape;
-                sh.rotation = Quaternion.LookRotation(aim).eulerAngles - gameObject.transform.rotation.eulerAngles;
+                sh.rotation = Quaternion.LookRotation(aim).eulerAngles;
                 if(!particles.isPlaying) {
                     particles.Play();
                 }
             }
-            progress += Time.fixedDeltaTime;
-            if(progress >= targetInteractable.useDuration) {
-                targetInteractable.used();
-            }
 
+            progress += Time.deltaTime;
+            // if(progress >= targetInteractable.useDuration) {
+            if(targetInteractable.isUsed(progress)) {
+                targetInteractable.used();
+            }else {
+                if(chargeBar != null) {
+                    chargeBar.showBar(true);
+                    chargeBar.percentage = progress / targetInteractable.useDuration;
+                }
+            }
         }
         else if(particles.isPlaying) {
+            chargeBar.showBar(false);
             particles.Stop();
             progress = 0;
         }
