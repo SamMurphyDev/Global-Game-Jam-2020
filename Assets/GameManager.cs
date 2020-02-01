@@ -25,7 +25,7 @@ public class GameManager : MonoBehaviour
         List<int> playerIndexes = new List<int>();
         foreach(int index in playerIndexes) {
             GameObject obj = Instantiate(playerPrefab, levelManagement.GetGameObjectSpawnLocation(), Quaternion.identity);
-            obj.GetComponent<PlayerMovement>().
+            // obj.GetComponent<PlayerMovement>().
         }
     }
 

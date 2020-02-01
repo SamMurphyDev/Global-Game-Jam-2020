@@ -21,10 +21,10 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-<<<<<<< HEAD
         if(rb == null) {
             rb = GetComponent<Rigidbody>();
-=======
+        }
+        
         for (int i = 0; i < gameObject.transform.childCount; i++)
         {
             Transform child = gameObject.transform.GetChild(i);
@@ -40,7 +40,6 @@ public class PlayerMovement : MonoBehaviour
                 verticalInputAxis = "Vertical P" + playerNum;
                 Debug.Log("verticalInputAxis: " + verticalInputAxis);
             }
->>>>>>> b38f14dc197c003b3854cb591bf224dc9701f030
         }
     }
 
