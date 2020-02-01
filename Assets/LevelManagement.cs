@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGeneration : MonoBehaviour
+public class LevelManagement : MonoBehaviour
 {
     
     public Camera mainCamera;
@@ -31,6 +31,8 @@ public class LevelGeneration : MonoBehaviour
     [HideInInspector]
     public GameObject[,] map;
 
+    List<Vector3> spawnLocations = new List<Vector3>();
+
     int[] NumberSpread(int total, int max) {
         if(total > max) {
             throw new System.Exception("Total needs to be less than Max");
@@ -50,11 +52,14 @@ public class LevelGeneration : MonoBehaviour
         return numbers.ToArray();
     }
 
-    void Start()
-    {
-        string seed = "112433abcc120b474d189a6979247624";
+    public Vector3 GetGameObjectSpawnLocation() {
+        return spawnLocations[(int)Mathf.Floor(Random.Range(0, spawnLocations.Count))];
+    }
 
-        // Random.InitState(seed.GetHashCode());
+    public void generateLevel (string seed) {
+        // string seed = "112433abcc120b474d189a6979247624";
+
+        Random.InitState(seed.GetHashCode());
 
         map = new GameObject[levelYSize, levelXSize];
 
@@ -109,6 +114,8 @@ public class LevelGeneration : MonoBehaviour
             for(int ii = 0; ii < levelXSize; ii++) {
                 GameObject obj = map[i, ii];
                 if (obj != null) {
+                    spawnLocations.Add(obj.transform.position + new Vector3(0, 5, 0));
+
                     if(obj.transform.position.z > max.z) {
                         max.z = obj.transform.position.z;
                     }
@@ -123,5 +130,10 @@ public class LevelGeneration : MonoBehaviour
         Vector3 cameraMove = (max - min) / 2;
         mainCamera.transform.position = cameraMove - new Vector3(20, -20, 0);
         Instantiate(levelObj, cameraMove, Quaternion.identity);
+    }
+
+    void Start()
+    {
+        
     }
 }
