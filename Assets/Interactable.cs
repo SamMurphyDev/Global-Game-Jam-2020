@@ -16,10 +16,13 @@ public class Interactable : MonoBehaviour
         halo.enabled = false;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
+    public bool isUsed(float progress) {
+        if (progress >= useDuration){
+            return true;
+        }
+        return false;
     }
+
     public void used() {
         if(this.destroyOnUse) {
             Destroy(this.gameObject);
