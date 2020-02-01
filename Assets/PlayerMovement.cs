@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public string horizontalInputAxis = "Horizontal P1";
-    public string verticalInputAxis = "Vertical P1";
-
     public float moveSpeed = 20;
 
     // The amount of torque to apply to keep the player standing upright.
@@ -18,9 +15,28 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 movement = new Vector3();
 
+    private string horizontalInputAxis;
+    private string verticalInputAxis;
+
     // Start is called before the first frame update 
     void Start()
     {
+        for (int i = 0; i < gameObject.transform.childCount; i++)
+        {
+            Transform child = gameObject.transform.GetChild(i);
+
+            if (child.tag.StartsWith("Player "))
+            {
+                char[] childTag = child.tag.ToCharArray();
+                char playerNum = childTag[childTag.Length - 1];
+
+                horizontalInputAxis = "Horizontal P" + playerNum;
+                Debug.Log("horizontalInputAxis: " + horizontalInputAxis);
+
+                verticalInputAxis = "Vertical P" + playerNum;
+                Debug.Log("verticalInputAxis: " + verticalInputAxis);
+            }
+        }
     }
 
     // Update is called once per frame
