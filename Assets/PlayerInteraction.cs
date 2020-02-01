@@ -6,7 +6,7 @@ public class PlayerInteraction : MonoBehaviour
 {
     private Vector3 targetPosition = new Vector3();
     private Interactable targetInteractable;
-    private ParticleSystem particles;
+    public ParticleSystem particles;
 
     public GameObject stabilisedChild;
     public ChargeBar chargeBar;
@@ -16,7 +16,6 @@ public class PlayerInteraction : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-        particles = gameObject.GetComponent<ParticleSystem>();
     }
 
     void Update()
@@ -26,7 +25,7 @@ public class PlayerInteraction : MonoBehaviour
             Vector3 aim = targetPosition - gameObject.transform.position;
             if(particles != null) {
                 var sh = particles.shape;
-                sh.rotation = Quaternion.LookRotation(aim).eulerAngles - gameObject.transform.rotation.eulerAngles;
+                sh.rotation = Quaternion.LookRotation(aim).eulerAngles;
                 if(!particles.isPlaying) {
                     particles.Play();
                 }
