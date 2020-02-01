@@ -52,7 +52,7 @@ public class LevelGeneration : MonoBehaviour
     {
         string seed = "112433abcc120b474d189a6979247624";
 
-        // Random.InitState(seed.GetHashCode());
+        Random.InitState(seed.GetHashCode());
 
         GameObject[,] map = new GameObject[levelYSize, levelXSize];
 
@@ -94,10 +94,8 @@ public class LevelGeneration : MonoBehaviour
 
                     if(totalNeighbouringTiles <= smoothIntensity) {
                         c++;
-                        Debug.Log(map[i, ii]);
                         Destroy(map[i, ii]);
                         map[i, ii] = null;
-                        Debug.Log("Removing Tile " + ii + ", " + i + ", " + c);
                     }
                 }
             }
