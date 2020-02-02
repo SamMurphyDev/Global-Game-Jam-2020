@@ -12,22 +12,31 @@ public class PlayerInteraction : MonoBehaviour
     public ChargeBar chargeBar;
 
     private float progress = 0;
+    public float dropThreshold = 12;
 
     public Item itemHands;
     public Item itemHead;
     public Dictionary<ItemSlot, Item> items = new Dictionary<ItemSlot, Item>();
     private ItemSpawner itemSpawner;
+    private float speed;
+    public Rigidbody rb;
+    private PlayerMovement movement;
 
     // Start is called before the first frame update 
     void Start()
     {
+        Debug.Log("movement");
         itemSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawner>();
+        Debug.Log("movement");
+
+        movement = GetComponent<PlayerMovement>();
+        Debug.Log(movement);
     }
 
     void Update()
     {
         stabilisedChild.transform.rotation = Quaternion.identity;
-        if (Input.GetButton("Fire2") && targetInteractable != null)
+        if (Input.GetAxisRaw(movement.interactButtonAxis) == 1 && targetInteractable != null)
         {
             Vector3 aim = targetPosition - gameObject.transform.position;
             if (particles != null)
@@ -83,6 +92,27 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.rigidbody)
+        {
+            Debug.Log(collision.relativeVelocity.magnitude);
+            Debug.Log(speed);
+            if((collision.relativeVelocity.magnitude - speed) > dropThreshold) {
+                if(items.ContainsKey(ItemSlot.Head)) {
+                    dropItem(ItemSlot.Head);
+                } else if(items.ContainsKey(ItemSlot.Hands)) {
+                    dropItem(ItemSlot.Hands);
+                }
+            }
+        }
+    }
+
+    private void dropItem(ItemSlot slot) {
+        itemSpawner.SpawnItem(items[slot], gameObject.transform.position);
+        items.Remove(slot);
+    }
+
     public void pickUpItem(Item item, ItemSlot slot)
     {
         // we MUST reset please
@@ -94,5 +124,9 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         items[slot] = item;
+    }
+
+    private void FixedUpdate() {
+        speed = rb.velocity.magnitude;
     }
 }
