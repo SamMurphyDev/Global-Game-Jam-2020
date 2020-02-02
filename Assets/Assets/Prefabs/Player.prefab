@@ -4763,8 +4763,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7436948520408957813}
   - component: {fileID: 7436948520408957812}
-  - component: {fileID: 7436948520408957811}
   - component: {fileID: 7436948520408957810}
+  - component: {fileID: 7436948520408957811}
   - component: {fileID: 7436948520408957809}
   - component: {fileID: 7436948520408957704}
   m_Layer: 0
@@ -4820,6 +4820,10 @@ MonoBehaviour:
   particles: {fileID: 3617619672976992120}
   stabilisedChild: {fileID: 7717012069791634955}
   chargeBar: {fileID: 1980286835768629075}
+  itemHands: 0
+  itemHead: 0
+  dropThreshold: 12
+  rb: {fileID: 7436948520408957809}
 --- !u!114 &7436948520408957810
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4837,6 +4841,9 @@ MonoBehaviour:
   bearingTorque: 50
   rb: {fileID: 7436948520408957809}
   movement: {x: 0, y: 0, z: 0}
+  interactButtonAxis: 
+  tagHolder: {fileID: 8365817792158910522}
+  playerKillY: -1
 --- !u!54 &7436948520408957809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4916,7 +4923,7 @@ MeshRenderer:
   m_GameObject: {fileID: 7436948521005189601}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1

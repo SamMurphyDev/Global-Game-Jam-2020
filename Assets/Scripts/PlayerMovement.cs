@@ -15,8 +15,15 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 movement = new Vector3();
 
-    private string horizontalInputAxis;
-    private string verticalInputAxis;
+    public string horizontalInputAxis;
+    public string verticalInputAxis;
+
+    public string interactButtonAxis;
+    public GameObject tagHolder;
+
+    private LevelManagement levelManagement;
+
+    public float playerKillY = -4;
 
     // Start is called before the first frame update 
     void Start()
@@ -24,23 +31,24 @@ public class PlayerMovement : MonoBehaviour
         if(rb == null) {
             rb = GetComponent<Rigidbody>();
         }
-        
-        for (int i = 0; i < gameObject.transform.childCount; i++)
-        {
-            Transform child = gameObject.transform.GetChild(i);
 
-            if (child.tag.StartsWith("Player "))
-            {
-                char[] childTag = child.tag.ToCharArray();
-                char playerNum = childTag[childTag.Length - 1];
+        levelManagement = GameObject.FindGameObjectWithTag("GameController").GetComponent<LevelManagement>();
+    }
 
-                horizontalInputAxis = "Horizontal P" + playerNum;
-                Debug.Log("horizontalInputAxis: " + horizontalInputAxis);
+    public void setChildTag(string tag) {
+        tagHolder.tag = tag;
 
-                verticalInputAxis = "Vertical P" + playerNum;
-                Debug.Log("verticalInputAxis: " + verticalInputAxis);
-            }
-        }
+        char[] childTag = tagHolder.tag.ToCharArray();
+        char playerNum = childTag[childTag.Length - 1];
+
+        horizontalInputAxis = "Horizontal P" + playerNum;
+        Debug.Log("horizontalInputAxis: " + horizontalInputAxis);
+
+        verticalInputAxis = "Vertical P" + playerNum;
+        Debug.Log("verticalInputAxis: " + verticalInputAxis);
+
+        interactButtonAxis = "X P" + playerNum;
+        Debug.Log("interactButtonAxis: " + interactButtonAxis);
     }
 
     // Update is called once per frame
@@ -48,6 +56,11 @@ public class PlayerMovement : MonoBehaviour
     {
         movement.x = Input.GetAxisRaw(horizontalInputAxis);
         movement.z = Input.GetAxisRaw(verticalInputAxis) * -1;
+
+        if(transform.position.y <= playerKillY) {
+            rb.velocity = Vector3.zero;
+            transform.position = levelManagement.GetGameObjectSpawnLocation();
+        }
     }
 
     void FixedUpdate()

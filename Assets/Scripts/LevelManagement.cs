@@ -7,6 +7,9 @@ public class LevelManagement : MonoBehaviour
     
     public Camera mainCamera;
     public GameObject levelObj;
+    public GameObject sciFiBarrel;
+    [Range(0,1)]
+    public float barrelSpawnProbability = 0.1f;
     public Transform environment;
     public int levelXSize = 10;
     public int levelYSize = 10;
@@ -33,6 +36,9 @@ public class LevelManagement : MonoBehaviour
 
     List<Vector3> spawnLocations = new List<Vector3>();
 
+    [Range(-5, 5)]
+    public float playerDropHeight = 0;
+
     int[] NumberSpread(int total, int max) {
         if(total > max) {
             throw new System.Exception("Total needs to be less than Max");
@@ -53,7 +59,7 @@ public class LevelManagement : MonoBehaviour
     }
 
     public Vector3 GetGameObjectSpawnLocation() {
-        return spawnLocations[(int)Mathf.Floor(Random.Range(0, spawnLocations.Count))];
+        return spawnLocations[(int)Mathf.Floor(Random.Range(0, spawnLocations.Count))] + new Vector3(0, playerDropHeight, 0);
     }
 
     public void generateLevel (string seed) {
@@ -73,6 +79,12 @@ public class LevelManagement : MonoBehaviour
                 obj.transform.position = new Vector3(locationX * squaredOffset, 0, ii * squaredOffset);
                 Tile tile = obj.GetComponent<Tile>();
                 tile.Position = new Vector2Int(locationX, ii);
+
+                if (Random.value > 1.0f - barrelSpawnProbability)
+                {
+                    // Put a barrel in the middle of the tile.
+                    Instantiate(sciFiBarrel, obj.transform);
+                }
             }
         }
 
@@ -128,7 +140,7 @@ public class LevelManagement : MonoBehaviour
         }
 
         Vector3 cameraMove = (max - min) / 2;
-        mainCamera.transform.position = cameraMove - new Vector3(20, -20, 0);
+        mainCamera.transform.position = cameraMove - new Vector3(25, -25, 0);
         Instantiate(levelObj, cameraMove, Quaternion.identity);
     }
 
