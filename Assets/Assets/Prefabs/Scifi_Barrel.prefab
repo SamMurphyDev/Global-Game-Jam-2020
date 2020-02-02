@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1323375094713769921}
+  - component: {fileID: 5527820496930319956}
   m_Layer: 0
   m_Name: Scifi_Barrel
   m_TagString: Untagged
@@ -25,12 +26,26 @@ Transform:
   m_GameObject: {fileID: 1059129086768504196}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 1332363552641100201}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!136 &5527820496930319956
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1059129086768504196}
+  m_Material: {fileID: 13400000, guid: 3f0e99cc78d2fd4478238ec607d074bf, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1.0700057
+  m_Height: 3.7559137
+  m_Direction: 1
+  m_Center: {x: -0.41606474, y: 3.2408643, z: 0}
 --- !u!1001 &6271039662693810867
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -93,6 +108,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -3701727588016112575, guid: eb8838115b2b91941abf59649a1906d8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7cb4000e14ce620498f0195e7d4557ac, type: 2}
     - target: {fileID: -927199367670048503, guid: eb8838115b2b91941abf59649a1906d8,
         type: 3}
       propertyPath: m_Name

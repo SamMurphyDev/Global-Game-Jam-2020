@@ -7,6 +7,9 @@ public class LevelManagement : MonoBehaviour
     
     public Camera mainCamera;
     public GameObject levelObj;
+    public GameObject sciFiBarrel;
+    [Range(0,1)]
+    public float barrelSpawnProbability = 0.1f;
     public Transform environment;
     public int levelXSize = 10;
     public int levelYSize = 10;
@@ -76,6 +79,12 @@ public class LevelManagement : MonoBehaviour
                 obj.transform.position = new Vector3(locationX * squaredOffset, 0, ii * squaredOffset);
                 Tile tile = obj.GetComponent<Tile>();
                 tile.Position = new Vector2Int(locationX, ii);
+
+                if (Random.value > 1.0f - barrelSpawnProbability)
+                {
+                    // Put a barrel in the middle of the tile.
+                    Instantiate(sciFiBarrel, obj.transform);
+                }
             }
         }
 
