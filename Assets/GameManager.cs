@@ -20,15 +20,18 @@ public class GameManager : MonoBehaviour
         //Spawn Players In
 
         List<int> playerIndexes = new List<int>();
+        Debug.Log(SharedData.player1Joined);
         if (SharedData.player1Joined) playerIndexes.Add(1);
         if (SharedData.player2Joined) playerIndexes.Add(2);
         if (SharedData.player3Joined) playerIndexes.Add(3);
         if (SharedData.player4Joined) playerIndexes.Add(4);
 
         foreach(int index in playerIndexes) {
+            Debug.Log(index);
             GameObject obj = Instantiate(playerPrefab, levelManagement.GetGameObjectSpawnLocation(), Quaternion.identity);
             string name = "Player " + index;
             string tag = "P" + index;
+            Debug.Log(obj.transform.position);
             obj.GetComponent<PlayerMovement>().setChildTag(name);
             obj.GetComponent<PlayerInteraction>().tagSetup(tag);
             obj.name = name;

@@ -32,6 +32,7 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject[] bigBlade;
 
     public GameObject solarPanel;
+    private float charge;
 
     // Start is called before the first frame update 
     void Start()
@@ -42,14 +43,17 @@ public class PlayerInteraction : MonoBehaviour
 
     public void tagSetup(string tag) {
         GameObject hud = GameObject.FindGameObjectWithTag(tag + " HUD");
+        Debug.Log(tag);
         playerChargeBar = hud.GetComponentInChildren<ChargeBar>();
-        playerChargeBar.percentage = 0.5F;
+        playerChargeBar.percentage = 0;
+        Debug.Log("showing...");
         playerChargeBar.showBar(true);
+        Debug.Log("SHOWING BAR FOR PLAYER " + tag);
     }
 
     void Update()
     {
-        stabilisedChild.transform.rotation = Quaternion.Euler(0, 90, 0);
+        stabilisedChild.transform.rotation = Quaternion.identity;
         if (Input.GetAxisRaw(movement.interactButtonAxis) == 1 && targetInteractable != null)
         {
             Vector3 aim = targetPosition - gameObject.transform.position;
@@ -86,6 +90,11 @@ public class PlayerInteraction : MonoBehaviour
             useProgressBar.showBar(false);
             particles.Stop();
             progress = 0;
+        }
+
+        if(items.ContainsValue(Item.Crown)) {
+            charge += Time.deltaTime;
+            playerChargeBar.percentage = charge / 15;
         }
     }
 
@@ -140,7 +149,7 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 break;
             case Item.Crown:
-                solarPanel.SetActive(status);
+                //solarPanel.SetActive(status);
                 break;
             case Item.Big_Claw:
                 foreach(GameObject obj in bigClaws) {
@@ -170,10 +179,6 @@ public class PlayerInteraction : MonoBehaviour
     {
         // we MUST reset please
         progress = 0;
-
-        if(item == Item.Crown) {
-            playerChargeBar.percentage = 1;
-        }
 
         if (items.ContainsKey(slot))
         {
