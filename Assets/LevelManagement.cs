@@ -33,6 +33,9 @@ public class LevelManagement : MonoBehaviour
 
     List<Vector3> spawnLocations = new List<Vector3>();
 
+    [Range(-5, 5)]
+    public float playerDropHeight = 0;
+
     int[] NumberSpread(int total, int max) {
         if(total > max) {
             throw new System.Exception("Total needs to be less than Max");
@@ -53,7 +56,7 @@ public class LevelManagement : MonoBehaviour
     }
 
     public Vector3 GetGameObjectSpawnLocation() {
-        return spawnLocations[(int)Mathf.Floor(Random.Range(0, spawnLocations.Count))];
+        return spawnLocations[(int)Mathf.Floor(Random.Range(0, spawnLocations.Count))] + new Vector3(0, playerDropHeight, 0);
     }
 
     public void generateLevel (string seed) {

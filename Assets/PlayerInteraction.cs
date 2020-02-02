@@ -21,7 +21,7 @@ public class PlayerInteraction : MonoBehaviour
     // Start is called before the first frame update 
     void Start()
     {
-        itemSpawner = GameObject.FindGameObjectWithTag("ItemSpawner").GetComponent<ItemSpawner>();
+        itemSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawner>();
     }
 
     void Update()
