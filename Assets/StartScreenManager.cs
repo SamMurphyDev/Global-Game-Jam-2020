@@ -37,7 +37,7 @@ public class StartScreenManager : MonoBehaviour
             // TODO: Update the UI.
         }
 
-        if (Input.GetButton("Submit"))
+        if (Input.GetButton("Start"))
         {
             if (SharedData.player1Joined || SharedData.player2Joined || SharedData.player3Joined || SharedData.player4Joined)
             {
