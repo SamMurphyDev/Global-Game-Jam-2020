@@ -130,6 +130,8 @@ public class LevelManagement : MonoBehaviour
                         barrel.transform.Translate(Random.insideUnitCircle * squaredOffset * new Vector3(1, 0, 1));
                     }
 
+
+
                     if(obj.transform.position.z > max.z) {
                         max.z = obj.transform.position.z;
                     }
