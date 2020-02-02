@@ -4763,8 +4763,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7436948520408957813}
   - component: {fileID: 7436948520408957812}
-  - component: {fileID: 7436948520408957811}
   - component: {fileID: 7436948520408957810}
+  - component: {fileID: 7436948520408957811}
   - component: {fileID: 7436948520408957809}
   - component: {fileID: 7436948520408957704}
   m_Layer: 0
@@ -4805,6 +4805,26 @@ CapsuleCollider:
   m_Height: 10
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7436948520408957810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7436948520408957808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0563407813d27aa4ca426015b0df27be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 20
+  uprightingTorque: 75
+  bearingTorque: 50
+  rb: {fileID: 7436948520408957809}
+  movement: {x: 0, y: 0, z: 0}
+  interactButtonAxis: 
+  tagHolder: {fileID: 8365817792158910522}
+  playerKillY: -1
 --- !u!114 &7436948520408957811
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4824,26 +4844,6 @@ MonoBehaviour:
   itemHands: 0
   itemHead: 0
   rb: {fileID: 7436948520408957809}
---- !u!114 &7436948520408957810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7436948520408957808}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0563407813d27aa4ca426015b0df27be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 20
-  uprightingTorque: 75
-  bearingTorque: 50
-  rb: {fileID: 7436948520408957809}
-  movement: {x: 0, y: 0, z: 0}
-  tagHolder: {fileID: 8365817792158910522}
-  levelManagement: {fileID: 0}
-  playerKillY: -1
 --- !u!54 &7436948520408957809
 Rigidbody:
   m_ObjectHideFlags: 0

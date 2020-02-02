@@ -20,17 +20,23 @@ public class PlayerInteraction : MonoBehaviour
     private ItemSpawner itemSpawner;
     private float speed;
     public Rigidbody rb;
+    private PlayerMovement movement;
 
     // Start is called before the first frame update 
     void Start()
     {
+        Debug.Log("movement");
         itemSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawner>();
+        Debug.Log("movement");
+
+        movement = GetComponent<PlayerMovement>();
+        Debug.Log(movement);
     }
 
     void Update()
     {
         stabilisedChild.transform.rotation = Quaternion.identity;
-        if (Input.GetButton("Fire2") && targetInteractable != null)
+        if (Input.GetAxisRaw(movement.interactButtonAxis) == 1 && targetInteractable != null)
         {
             Vector3 aim = targetPosition - gameObject.transform.position;
             if (particles != null)

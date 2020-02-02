@@ -15,9 +15,10 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector3 movement = new Vector3();
 
-    private string horizontalInputAxis;
-    private string verticalInputAxis;
+    public string horizontalInputAxis;
+    public string verticalInputAxis;
 
+    public string interactButtonAxis;
     public GameObject tagHolder;
 
     private LevelManagement levelManagement;
@@ -45,6 +46,9 @@ public class PlayerMovement : MonoBehaviour
 
         verticalInputAxis = "Vertical P" + playerNum;
         Debug.Log("verticalInputAxis: " + verticalInputAxis);
+
+        interactButtonAxis = "X P" + playerNum;
+        Debug.Log("interactButtonAxis: " + interactButtonAxis);
     }
 
     // Update is called once per frame
