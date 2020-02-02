@@ -1,5 +1,6 @@
 public enum Item
 {
-    Red = 0,
-    Blue = 1
+    None = 0,
+    Crown = 1,
+    Fist = 2
 }
