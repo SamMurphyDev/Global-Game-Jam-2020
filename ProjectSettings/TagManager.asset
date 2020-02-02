@@ -18,6 +18,10 @@ TagManager:
   - P3 Selected
   - P4 Selected
   - ItemSpawner
+  - P1 HUD
+  - P2 HUD
+  - P3 HUD
+  - P4 HUD
   layers:
   - Default
   - TransparentFX

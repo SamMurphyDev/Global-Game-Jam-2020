@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8957163933744067983}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 63.9375, y: 96.262695, z: -108.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8957163934749225381}
@@ -160,7 +160,7 @@ MonoBehaviour:
   backgroundSpriteRenderer: {fileID: 8957163933801692920}
   borderSpriteRenderer: {fileID: 8957163935830735853}
   barSpriteSpriteRenderer: {fileID: 8957163934320878964}
-  visible: 0
+  defaultVisible: 0
 --- !u!1 &8957163934320878970
 GameObject:
   m_ObjectHideFlags: 0
@@ -265,7 +265,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8957163934749225380}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -63.9375, y: -96.262695, z: 108.5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8957163933801692927}

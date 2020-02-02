@@ -4842,7 +4842,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particles: {fileID: 3617619672976992120}
   stabilisedChild: {fileID: 7717012069791634955}
-  chargeBar: {fileID: 1980286835768629075}
+  useProgressBar: {fileID: 1980286835768629075}
   dropThreshold: 12
   itemHands: 0
   itemHead: 0
