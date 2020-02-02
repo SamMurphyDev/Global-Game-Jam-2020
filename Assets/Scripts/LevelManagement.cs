@@ -79,12 +79,6 @@ public class LevelManagement : MonoBehaviour
                 obj.transform.position = new Vector3(locationX * squaredOffset, 0, ii * squaredOffset);
                 Tile tile = obj.GetComponent<Tile>();
                 tile.Position = new Vector2Int(locationX, ii);
-
-                if (Random.value > 1.0f - barrelSpawnProbability)
-                {
-                    // Put a barrel in the middle of the tile.
-                    Instantiate(sciFiBarrel, obj.transform);
-                }
             }
         }
 
@@ -128,6 +122,14 @@ public class LevelManagement : MonoBehaviour
                 if (obj != null) {
                     spawnLocations.Add(obj.transform.position + new Vector3(0, 5, 0));
 
+                    if (Random.value > 1.0f - barrelSpawnProbability)
+                    {
+                        // Put a barrel in the middle of the tile.
+                        GameObject barrel = Instantiate(sciFiBarrel, environment);
+                        barrel.transform.position = new Vector3(obj.transform.position.x, -0.7f, obj.transform.position.z);
+                        barrel.transform.Translate(Random.insideUnitCircle * squaredOffset * new Vector3(1, 0, 1));
+                    }
+
                     if(obj.transform.position.z > max.z) {
                         max.z = obj.transform.position.z;
                     }
@@ -141,7 +143,6 @@ public class LevelManagement : MonoBehaviour
 
         Vector3 cameraMove = (max - min) / 2;
         mainCamera.transform.position = cameraMove - new Vector3(25, -25, 0);
-        Instantiate(levelObj, cameraMove, Quaternion.identity);
     }
 
     void Start()

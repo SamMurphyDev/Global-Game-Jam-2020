@@ -54,8 +54,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw(horizontalInputAxis);
-        movement.z = Input.GetAxisRaw(verticalInputAxis) * -1;
+        movement.x = -Input.GetAxisRaw(verticalInputAxis);
+        movement.z = -Input.GetAxisRaw(horizontalInputAxis);
 
         if(transform.position.y <= playerKillY) {
             rb.velocity = Vector3.zero;
@@ -77,7 +77,7 @@ public class PlayerMovement : MonoBehaviour
     {
         // Transform the input to camera-relative.
         Vector3 movementCameraRelative = movement;
-        Camera.main.transform.TransformDirection(movementCameraRelative);
+        //Camera.main.transform.TransformDirection(movementCameraRelative);
 
         // Move the player.
         Vector3 impulse = movementCameraRelative * moveSpeed * Time.fixedDeltaTime;

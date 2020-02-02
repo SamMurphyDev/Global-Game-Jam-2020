@@ -22,15 +22,21 @@ public class PlayerInteraction : MonoBehaviour
     public Rigidbody rb;
     private PlayerMovement movement;
 
+    public GameObject[] littleClaws;
+    public GameObject[] littleArm;
+    public GameObject[] littleBlade;
+
+    public GameObject[] bigClaws;
+    public GameObject[] bigArm;
+    public GameObject[] bigBlade;
+
+    public GameObject solarPanel;
+
     // Start is called before the first frame update 
     void Start()
     {
-        Debug.Log("movement");
         itemSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawner>();
-        Debug.Log("movement");
-
         movement = GetComponent<PlayerMovement>();
-        Debug.Log(movement);
     }
 
     void Update()
@@ -108,8 +114,47 @@ public class PlayerInteraction : MonoBehaviour
         }
     }
 
+    private void setStatusOfPlayerParts(bool status, Item item) {
+        switch(item) {
+            case Item.Claw:
+                foreach(GameObject obj in littleClaws) {
+                    obj.SetActive(status);
+                }
+                break;
+            case Item.Sword:
+                foreach(GameObject obj in littleBlade) {
+                    obj.SetActive(status);
+                }
+                break;
+            case Item.Fist:
+                foreach(GameObject obj in littleArm) {
+                    obj.SetActive(status);
+                }
+                break;
+            case Item.Crown:
+                solarPanel.SetActive(status);
+                break;
+            case Item.Big_Claw:
+                foreach(GameObject obj in bigClaws) {
+                    obj.SetActive(status);
+                }
+                break;
+            case Item.Big_Sword:
+                foreach(GameObject obj in bigBlade) {
+                    obj.SetActive(status);
+                }
+                break;
+            case Item.Big_Fist:
+                foreach(GameObject obj in bigArm) {
+                    obj.SetActive(status);
+                }
+                break;
+        }
+    }
+
     private void dropItem(ItemSlot slot) {
         itemSpawner.SpawnItem(items[slot], gameObject.transform.position);
+        setStatusOfPlayerParts(false, items[slot]);
         items.Remove(slot);
     }
 
@@ -124,6 +169,8 @@ public class PlayerInteraction : MonoBehaviour
         }
 
         items[slot] = item;
+
+        setStatusOfPlayerParts(true, item);
     }
 
     private void FixedUpdate() {

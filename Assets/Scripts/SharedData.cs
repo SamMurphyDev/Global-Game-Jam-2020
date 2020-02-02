@@ -4,13 +4,15 @@ using UnityEngine;
 
 public static class SharedData
 {
-    public static bool player1Joined = false;
-    public static bool player2Joined = false;
-    public static bool player3Joined = false;
-    public static bool player4Joined = false;
+    // All true initially so you can run the Sam scene on its own.
+    public static bool player1Joined = true;
+    public static bool player2Joined = true;
+    public static bool player3Joined = true;
+    public static bool player4Joined = true;
 
     public static void Reset()
     {
+        Debug.Log("Resetting shared data");
         player1Joined = false;
         player2Joined = false;
         player3Joined = false;

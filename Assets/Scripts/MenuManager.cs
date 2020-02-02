@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // These are true by default in SharedData to make testing easier.
+        SharedData.player1Joined = false;
+        SharedData.player2Joined = false;
+        SharedData.player3Joined = false;
+        SharedData.player4Joined = false;
     }
 
     // Update is called once per frame
@@ -42,8 +47,8 @@ public class MenuManager : MonoBehaviour
         {
             if (SharedData.player1Joined || SharedData.player2Joined || SharedData.player3Joined || SharedData.player4Joined)
             {
-                Debug.Log("Loading SampleScene");
-                SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+                Debug.Log("Loading Main Game Scene");
+                SceneManager.LoadScene(1);
             }
             else
             {
