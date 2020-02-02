@@ -24,22 +24,28 @@ public class ItemSpawner : MonoBehaviour
     {
         Debug.Log("SPAWNING: " + item.ToString());
         GameObject gameObject = crown;
-        // switch(item){
-        //     case Item.Crown:
-        //         gameObject = crown;
-        //         break;
-        //     case Item.Fist:
-        //         gameObject = fist;
-        //         break;
-        //     case Item.Claw:
-        //         gameObject = claw;
-        //         break;
-        // }
+        switch(item){
+            case Item.Crown:
+                gameObject = crown;
+                break;
+            case Item.Fist:
+            case Item.Claw:
+            case Item.Sword:
+                gameObject = fist;
+                break;
+            case Item.Big_Claw:
+            case Item.Big_Fist:
+            case Item.Big_Sword:
+                gameObject = claw;
+                break;
+        }
         Debug.Log(gameObject != null);
         if (gameObject != null){
             Debug.Log("object? " + gameObject.ToString());
             GameObject obj = Instantiate(gameObject, position, Quaternion.identity);
             obj.GetComponent<Interactable>().giveItem = item;
+            // obj.transform.position = new Vector3(obj.transform.position.x, -0.1f, obj.transform.position.z);
+            obj.transform.Translate(Random.insideUnitCircle * new Vector3(1, 0, 1));
         }
     }
 }

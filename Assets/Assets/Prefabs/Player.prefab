@@ -4862,6 +4862,7 @@ MonoBehaviour:
   - {fileID: 1819715937881513987}
   bigBlade:
   - {fileID: 6871101221418491572}
+  winText: {fileID: 0}
   solarPanel: {fileID: 9155753272604075116}
 --- !u!54 &7436948520408957809
 Rigidbody:
@@ -4889,7 +4890,7 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
+  m_Radius: 0.85
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
@@ -5178,7 +5179,7 @@ PrefabInstance:
     - target: {fileID: 2350578203868186732, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.37
       objectReference: {fileID: 0}
     - target: {fileID: 2350578203868186732, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
@@ -5228,17 +5229,17 @@ PrefabInstance:
     - target: {fileID: 2350578203868186732, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2350578203868186732, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2350578203868186732, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 2480006489594420211, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
@@ -5334,6 +5335,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5566458623391725474, guid: 491a00b9f71ab9543bdee45162ea7860,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.0044
       objectReference: {fileID: 0}
     - target: {fileID: 6061727169026901768, guid: 491a00b9f71ab9543bdee45162ea7860,
         type: 3}
