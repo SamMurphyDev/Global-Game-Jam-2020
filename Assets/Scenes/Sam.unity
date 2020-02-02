@@ -502,11 +502,26 @@ PrefabInstance:
       propertyPath: m_Name
       value: HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 3469530071069853019, guid: fa6943740b913eb47a03a02dd2d16303,
+        type: 3}
+      propertyPath: m_Text
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3469530071069853019, guid: fa6943740b913eb47a03a02dd2d16303,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5778316488961409212, guid: fa6943740b913eb47a03a02dd2d16303,
         type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1927058557}
+    - target: {fileID: 5778316488961409212, guid: fa6943740b913eb47a03a02dd2d16303,
+        type: 3}
+      propertyPath: m_PlaneDistance
+      value: 12
+      objectReference: {fileID: 0}
     - target: {fileID: 7271141847911685294, guid: fa6943740b913eb47a03a02dd2d16303,
         type: 3}
       propertyPath: m_LocalPosition.x

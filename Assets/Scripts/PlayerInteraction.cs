@@ -40,7 +40,7 @@ public class PlayerInteraction : MonoBehaviour
     void Start()
     {
         itemSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawner>();
-        winText = GameObject.FindGameObjectWithTag("HUD").GetComponent<Text>();
+        winText = GameObject.FindGameObjectWithTag("HUD").GetComponentInChildren<Text>();
         movement = GetComponent<PlayerMovement>();
     }
 
@@ -103,6 +103,7 @@ public class PlayerInteraction : MonoBehaviour
             if(charge >= 15 && !winText.enabled) {
                 winText.text = "Player " + playerNumber + " Wins!";
                 winText.enabled = true;
+                Debug.Log(playerNumber + "wins");
             }
             playerChargeBar.percentage = charge / 15;
         }
@@ -159,7 +160,7 @@ public class PlayerInteraction : MonoBehaviour
                 }
                 break;
             case Item.Crown:
-                //solarPanel.SetActive(status);
+                solarPanel.SetActive(status);
                 break;
             case Item.Big_Claw:
                 foreach(GameObject obj in bigClaws) {
@@ -193,6 +194,7 @@ public class PlayerInteraction : MonoBehaviour
         if (items.ContainsKey(slot))
         {
             itemSpawner.SpawnItem(items[slot], gameObject.transform.position);
+            setStatusOfPlayerParts(false, items[slot]);
         }
 
         items[slot] = item;
