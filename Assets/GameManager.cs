@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
         foreach(int index in playerIndexes) {
             GameObject obj = Instantiate(playerPrefab, levelManagement.GetGameObjectSpawnLocation(), Quaternion.identity);
             string name = "Player " + index;
+            string tag = "P" + index;
             obj.GetComponent<PlayerMovement>().setChildTag(name);
+            obj.GetComponent<PlayerInteraction>().tagSetup(tag);
             obj.name = name;
             playerList[index - 1] = obj;
         }

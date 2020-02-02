@@ -9,7 +9,7 @@ public class PlayerInteraction : MonoBehaviour
     public ParticleSystem particles;
 
     public GameObject stabilisedChild;
-    public ChargeBar chargeBar;
+    public ChargeBar useProgressBar;
 
     private float progress = 0;
     public float dropThreshold = 12;
@@ -22,6 +22,8 @@ public class PlayerInteraction : MonoBehaviour
     public Rigidbody rb;
     private PlayerMovement movement;
 
+    private ChargeBar playerChargeBar;
+
     // Start is called before the first frame update 
     void Start()
     {
@@ -33,9 +35,16 @@ public class PlayerInteraction : MonoBehaviour
         Debug.Log(movement);
     }
 
+    public void tagSetup(string tag) {
+        GameObject hud = GameObject.FindGameObjectWithTag(tag + " HUD");
+        playerChargeBar = hud.GetComponentInChildren<ChargeBar>();
+        playerChargeBar.percentage = 0.5F;
+        playerChargeBar.showBar(true);
+    }
+
     void Update()
     {
-        stabilisedChild.transform.rotation = Quaternion.identity;
+        stabilisedChild.transform.rotation = Quaternion.Euler(0, 90, 0);
         if (Input.GetAxisRaw(movement.interactButtonAxis) == 1 && targetInteractable != null)
         {
             Vector3 aim = targetPosition - gameObject.transform.position;
@@ -60,16 +69,16 @@ public class PlayerInteraction : MonoBehaviour
             }
             else
             {
-                if (chargeBar != null)
+                if (useProgressBar != null)
                 {
-                    chargeBar.showBar(true);
-                    chargeBar.percentage = progress / targetInteractable.useDuration;
+                    useProgressBar.showBar(true);
+                    useProgressBar.percentage = progress / targetInteractable.useDuration;
                 }
             }
         }
         else if (particles.isPlaying)
         {
-            chargeBar.showBar(false);
+            useProgressBar.showBar(false);
             particles.Stop();
             progress = 0;
         }
@@ -117,6 +126,10 @@ public class PlayerInteraction : MonoBehaviour
     {
         // we MUST reset please
         progress = 0;
+
+        if(item == Item.Crown) {
+            playerChargeBar.percentage = 1;
+        }
 
         if (items.ContainsKey(slot))
         {
