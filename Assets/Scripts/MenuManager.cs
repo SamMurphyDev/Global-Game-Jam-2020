@@ -8,6 +8,11 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // These are true by default in SharedData to make testing easier.
+        SharedData.player1Joined = false;
+        SharedData.player2Joined = false;
+        SharedData.player3Joined = false;
+        SharedData.player4Joined = false;
     }
 
     // Update is called once per frame
