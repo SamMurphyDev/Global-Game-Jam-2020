@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelGeneration : MonoBehaviour
+public class LevelManagement : MonoBehaviour
 {
     
+    public Camera mainCamera;
     public GameObject levelObj;
     public Transform environment;
     public int levelXSize = 10;
@@ -27,7 +28,10 @@ public class LevelGeneration : MonoBehaviour
         new Vector2Int(-1, 0),
         new Vector2Int(1, 0)};
 
-    
+    [HideInInspector]
+    public GameObject[,] map;
+
+    List<Vector3> spawnLocations = new List<Vector3>();
 
     int[] NumberSpread(int total, int max) {
         if(total > max) {
@@ -48,13 +52,16 @@ public class LevelGeneration : MonoBehaviour
         return numbers.ToArray();
     }
 
-    void Start()
-    {
-        string seed = "112433abcc120b474d189a6979247624";
+    public Vector3 GetGameObjectSpawnLocation() {
+        return spawnLocations[(int)Mathf.Floor(Random.Range(0, spawnLocations.Count))];
+    }
+
+    public void generateLevel (string seed) {
+        // string seed = "112433abcc120b474d189a6979247624";
 
         Random.InitState(seed.GetHashCode());
 
-        GameObject[,] map = new GameObject[levelYSize, levelXSize];
+        map = new GameObject[levelYSize, levelXSize];
 
         for(int ii = 0; ii < levelYSize; ii++) {
             int[] tilesLocationsCoordX = NumberSpread(Random.Range((int)(levelXSize * minRowFill), levelXSize), levelXSize);
@@ -100,5 +107,33 @@ public class LevelGeneration : MonoBehaviour
                 }
             }
         }
+
+        Vector3 max = Vector3.zero;
+        Vector3 min = Vector3.zero;
+        for(int i = 0; i < levelYSize; i++) {
+            for(int ii = 0; ii < levelXSize; ii++) {
+                GameObject obj = map[i, ii];
+                if (obj != null) {
+                    spawnLocations.Add(obj.transform.position + new Vector3(0, 5, 0));
+
+                    if(obj.transform.position.z > max.z) {
+                        max.z = obj.transform.position.z;
+                    }
+
+                    if(obj.transform.position.z < min.z) {
+                        min.z = obj.transform.position.z;
+                    }
+                }
+            }    
+        }
+
+        Vector3 cameraMove = (max - min) / 2;
+        mainCamera.transform.position = cameraMove - new Vector3(20, -20, 0);
+        Instantiate(levelObj, cameraMove, Quaternion.identity);
+    }
+
+    void Start()
+    {
+        
     }
 }
