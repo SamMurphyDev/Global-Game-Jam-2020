@@ -161,6 +161,7 @@ GameObject:
   - component: {fileID: 542401827}
   - component: {fileID: 542401826}
   - component: {fileID: 542401828}
+  - component: {fileID: 542401829}
   m_Layer: 0
   m_Name: Controller
   m_TagString: GameController
@@ -181,9 +182,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelManagement: {fileID: 542401828}
+  itemSpawner: {fileID: 542401829}
   playerPrefab: {fileID: 7436948520408957808, guid: 772c1e458b57a294f8c4f87c0e33c868,
     type: 3}
-  playerDropHeight: -4
   playerList:
   - {fileID: 0}
   - {fileID: 0}
@@ -225,6 +226,22 @@ MonoBehaviour:
   smoothingPasses: 2
   smoothIntensity: 3
   squaredOffset: 4.8
+  playerDropHeight: -5
+--- !u!114 &542401829
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 542401825}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bba3a15a2c7bb7743a46e990890b38fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  crown: {fileID: 8596517170805609879, guid: c2e86e7e3a2dcee4d886db848f3e0af1, type: 3}
+  fist: {fileID: 4716889331368085113, guid: 7fc8c05b459d70d4d9beca460f8683b8, type: 3}
+  claw: {fileID: 4716889331368085113, guid: c59545aaf16c8df408527433b903dacb, type: 3}
 --- !u!1 &1927058555
 GameObject:
   m_ObjectHideFlags: 0
