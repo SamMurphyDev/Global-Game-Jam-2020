@@ -32,7 +32,8 @@ public class PlayerInteraction : MonoBehaviour
             Vector3 aim = targetPosition - gameObject.transform.position;
             if(particles != null) {
                 var sh = particles.shape;
-                sh.rotation = Quaternion.LookRotation(aim).eulerAngles;
+                sh.position = aim;
+                sh.rotation = Quaternion.LookRotation(new Vector3(0, 1, 0) - aim).eulerAngles;
                 if(!particles.isPlaying) {
                     particles.Play();
                 }
