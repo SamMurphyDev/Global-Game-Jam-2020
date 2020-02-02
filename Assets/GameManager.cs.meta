@@ -3,7 +3,10 @@ guid: 864aed60c1945ce458e4ce0b73ebe416
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - levelManagement: {instanceID: 0}
+  - itemSpawner: {instanceID: 0}
+  - playerPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
