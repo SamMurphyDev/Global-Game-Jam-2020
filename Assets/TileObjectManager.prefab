@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5668943842292692778}
   - component: {fileID: -6953506897459621356}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: TileObjectManager
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -74,7 +74,7 @@ MonoBehaviour:
     type: 3}
   WallSouthNorth: {fileID: 1267463655327841735, guid: dd29b03b88cfded419c8f479faae93a7,
     type: 3}
-  WallSouthNorthWest: {fileID: 2894307157081322538, guid: bd91629d6b9fc0144b6260b52358da35,
+  WallSouthNorthWest: {fileID: 5083575154219863515, guid: eebf94a29a2f16f4683d023212494e6a,
     type: 3}
   WallSouthWest: {fileID: 3327314725113171853, guid: 892ac67a1af440f4bab24e3d2be6ba10,
     type: 3}

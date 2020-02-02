@@ -4841,6 +4841,9 @@ MonoBehaviour:
   bearingTorque: 50
   rb: {fileID: 7436948520408957809}
   movement: {x: 0, y: 0, z: 0}
+  tagHolder: {fileID: 8365817792158910522}
+  levelManagement: {fileID: 0}
+  playerKillY: -1
 --- !u!54 &7436948520408957809
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4920,7 +4923,7 @@ MeshRenderer:
   m_GameObject: {fileID: 7436948521005189601}
   m_Enabled: 1
   m_CastShadows: 1
-  m_ReceiveShadows: 1
+  m_ReceiveShadows: 0
   m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
