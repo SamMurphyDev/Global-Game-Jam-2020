@@ -49,6 +49,10 @@ public class PlayerMovement : MonoBehaviour
 
         interactButtonAxis = "X P" + playerNum;
         Debug.Log("interactButtonAxis: " + interactButtonAxis);
+
+        foreach(MaterialSetter setter in GetComponentsInChildren<MaterialSetter>()) {
+            setter.TagSet(tag);
+        }
     }
 
     // Update is called once per frame
