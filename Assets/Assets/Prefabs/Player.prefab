@@ -4820,6 +4820,10 @@ MonoBehaviour:
   particles: {fileID: 3617619672976992120}
   stabilisedChild: {fileID: 7717012069791634955}
   chargeBar: {fileID: 1980286835768629075}
+  dropThreshold: 12
+  itemHands: 0
+  itemHead: 0
+  rb: {fileID: 7436948520408957809}
 --- !u!114 &7436948520408957810
 MonoBehaviour:
   m_ObjectHideFlags: 0
