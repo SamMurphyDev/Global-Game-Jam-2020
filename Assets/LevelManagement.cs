@@ -128,7 +128,7 @@ public class LevelManagement : MonoBehaviour
         }
 
         Vector3 cameraMove = (max - min) / 2;
-        mainCamera.transform.position = cameraMove - new Vector3(20, -20, 0);
+        mainCamera.transform.position = cameraMove - new Vector3(25, -25, 0);
         Instantiate(levelObj, cameraMove, Quaternion.identity);
     }
 
