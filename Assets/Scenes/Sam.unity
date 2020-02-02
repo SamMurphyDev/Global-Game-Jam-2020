@@ -219,6 +219,9 @@ MonoBehaviour:
   mainCamera: {fileID: 1927058557}
   levelObj: {fileID: 4428253480282035053, guid: 8ee7dae1fb2062c438f498ff9d9098bf,
     type: 3}
+  sciFiBarrel: {fileID: 1059129086768504196, guid: 30b9d9c7493a8c84cb673c8e6428b50b,
+    type: 3}
+  barrelSpawnProbability: 0.1
   environment: {fileID: 68958373}
   levelXSize: 10
   levelYSize: 15

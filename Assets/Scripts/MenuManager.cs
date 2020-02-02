@@ -42,8 +42,8 @@ public class MenuManager : MonoBehaviour
         {
             if (SharedData.player1Joined || SharedData.player2Joined || SharedData.player3Joined || SharedData.player4Joined)
             {
-                Debug.Log("Loading SampleScene");
-                SceneManager.LoadScene("SampleScene", LoadSceneMode.Single);
+                Debug.Log("Loading Main Game Scene");
+                SceneManager.LoadScene(1);
             }
             else
             {

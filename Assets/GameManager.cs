@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -19,10 +20,11 @@ public class GameManager : MonoBehaviour
         //Spawn Players In
 
         List<int> playerIndexes = new List<int>();
-        playerIndexes.Add(1);
-        playerIndexes.Add(2);
-        playerIndexes.Add(3);
-        playerIndexes.Add(4);
+        if (SharedData.player1Joined) playerIndexes.Add(1);
+        if (SharedData.player2Joined) playerIndexes.Add(2);
+        if (SharedData.player3Joined) playerIndexes.Add(3);
+        if (SharedData.player4Joined) playerIndexes.Add(4);
+
         foreach(int index in playerIndexes) {
             GameObject obj = Instantiate(playerPrefab, levelManagement.GetGameObjectSpawnLocation(), Quaternion.identity);
             string name = "Player " + index;
@@ -37,6 +39,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButton("Start"))
+        {
+            SharedData.Reset();
+            Debug.Log("Loading Menu");
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
+        }
     }
 }
