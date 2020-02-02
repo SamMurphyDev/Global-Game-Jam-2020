@@ -154,7 +154,7 @@ public class PlayerInteraction : MonoBehaviour
 
     private void dropItem(ItemSlot slot) {
         itemSpawner.SpawnItem(items[slot], gameObject.transform.position);
-        setStatusOfPlayerParts(true, items[slot]);
+        setStatusOfPlayerParts(false, items[slot]);
         items.Remove(slot);
     }
 
