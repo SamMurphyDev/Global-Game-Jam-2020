@@ -7,6 +7,7 @@ public class Interactable : MonoBehaviour
     public Item giveItem;
     public bool destroyOnUse = true;
     public float useDuration = 1;
+    public ItemSlot itemSlot;
     private Behaviour halo;
     private int activePlayers = 0;
     // Start is called before the first frame update 

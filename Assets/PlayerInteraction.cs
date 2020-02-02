@@ -8,15 +8,14 @@ public class PlayerInteraction : MonoBehaviour
     private Interactable targetInteractable;
     public ParticleSystem particles;
 
-    public GameObject stabilisedChild; 
+    public GameObject stabilisedChild;
     public ChargeBar chargeBar;
 
     private float progress = 0;
 
-    public Item itemLeft;
-    public Item itemRight;
-    public Item itemTop;
-
+    public Item itemHands;
+    public Item itemHead;
+    public Dictionary<ItemSlot, Item> items = new Dictionary<ItemSlot, Item>();
     private ItemSpawner itemSpawner;
 
     // Start is called before the first frame update 
@@ -28,31 +27,39 @@ public class PlayerInteraction : MonoBehaviour
     void Update()
     {
         stabilisedChild.transform.rotation = Quaternion.identity;
-        if(Input.GetButton("Fire2") && targetInteractable != null) {
+        if (Input.GetButton("Fire2") && targetInteractable != null)
+        {
             Vector3 aim = targetPosition - gameObject.transform.position;
-            if(particles != null) {
+            if (particles != null)
+            {
                 var sh = particles.shape;
                 sh.position = aim;
                 sh.rotation = Quaternion.LookRotation(new Vector3(0, 1, 0) - aim).eulerAngles;
-                if(!particles.isPlaying) {
+                if (!particles.isPlaying)
+                {
                     particles.Play();
                 }
             }
 
             progress += Time.deltaTime;
             // if(progress >= targetInteractable.useDuration) {
-            if(targetInteractable.isUsed(progress)) {
+            if (targetInteractable.isUsed(progress))
+            {
                 targetInteractable.used();
                 // receive the item you finished sucking
-                pickUpItem(targetInteractable.giveItem);
-            }else {
-                if(chargeBar != null) {
+                pickUpItem(targetInteractable.giveItem, targetInteractable.itemSlot);
+            }
+            else
+            {
+                if (chargeBar != null)
+                {
                     chargeBar.showBar(true);
                     chargeBar.percentage = progress / targetInteractable.useDuration;
                 }
             }
         }
-        else if(particles.isPlaying) {
+        else if (particles.isPlaying)
+        {
             chargeBar.showBar(false);
             particles.Stop();
             progress = 0;
@@ -61,7 +68,8 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(targetInteractable == null && other.tag == "Interactable") {
+        if (targetInteractable == null && other.tag == "Interactable")
+        {
             this.targetPosition = other.gameObject.transform.position;
             this.targetInteractable = other.gameObject.GetComponent<Interactable>();
         }
@@ -69,19 +77,22 @@ public class PlayerInteraction : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if(other.tag == "Interactable") {
+        if (other.tag == "Interactable")
+        {
             this.targetInteractable = null;
         }
     }
 
-    public void pickUpItem(Item item)
+    public void pickUpItem(Item item, ItemSlot slot)
     {
+        // we MUST reset please
         progress = 0;
 
-        if (itemTop != Item.None){
-            itemSpawner.SpawnItem(itemTop, gameObject.transform.position);
+        if (items.ContainsKey(slot))
+        {
+            itemSpawner.SpawnItem(items[slot], gameObject.transform.position);
         }
 
-        itemTop = item;
+        items[slot] = item;
     }
 }
