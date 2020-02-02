@@ -30,10 +30,9 @@ public class GameManager : MonoBehaviour
             Debug.Log(index);
             GameObject obj = Instantiate(playerPrefab, levelManagement.GetGameObjectSpawnLocation(), Quaternion.identity);
             string name = "Player " + index;
-            string tag = "P" + index;
             Debug.Log(obj.transform.position);
             obj.GetComponent<PlayerMovement>().setChildTag(name);
-            obj.GetComponent<PlayerInteraction>().tagSetup(tag);
+            obj.GetComponent<PlayerInteraction>().tagSetup(index);
             obj.name = name;
             playerList[index - 1] = obj;
         }

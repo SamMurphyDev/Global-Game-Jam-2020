@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerInteraction : MonoBehaviour
 {
@@ -30,18 +31,23 @@ public class PlayerInteraction : MonoBehaviour
     public GameObject[] bigClaws;
     public GameObject[] bigArm;
     public GameObject[] bigBlade;
-
+    public Text winText;
     public GameObject solarPanel;
     private float charge;
+    private int playerNumber;
 
     // Start is called before the first frame update 
     void Start()
     {
         itemSpawner = GameObject.FindGameObjectWithTag("GameController").GetComponent<ItemSpawner>();
+        winText = GameObject.FindGameObjectWithTag("HUD").GetComponent<Text>();
         movement = GetComponent<PlayerMovement>();
     }
 
-    public void tagSetup(string tag) {
+    public void tagSetup(int playerNumber) {
+        
+        string tag = "P" + playerNumber;
+        this.playerNumber = playerNumber;
         GameObject hud = GameObject.FindGameObjectWithTag(tag + " HUD");
         Debug.Log(tag);
         playerChargeBar = hud.GetComponentInChildren<ChargeBar>();
@@ -94,6 +100,10 @@ public class PlayerInteraction : MonoBehaviour
 
         if(items.ContainsValue(Item.Crown)) {
             charge += Time.deltaTime;
+            if(charge >= 15 && !winText.enabled) {
+                winText.text = "Player " + playerNumber + " Wins!";
+                winText.enabled = true;
+            }
             playerChargeBar.percentage = charge / 15;
         }
     }
