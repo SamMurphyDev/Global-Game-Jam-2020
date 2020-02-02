@@ -9,6 +9,14 @@ TagManager:
   - Player 2
   - Player 3
   - Player 4
+  - P1 Menu Button
+  - P2 Menu Button
+  - P3 Menu Button
+  - P4 Menu Button
+  - P1 Selected
+  - P2 Selected
+  - P3 Selected
+  - P4 Selected
   - ItemSpawner
   layers:
   - Default
