@@ -51,8 +51,8 @@ public class SampleSceneManager : MonoBehaviour
         if (Input.GetButton("Start"))
         {
             SharedData.Reset();
-            Debug.Log("Loading StartScreen");
-            SceneManager.LoadScene("StartScreen", LoadSceneMode.Single);
+            Debug.Log("Loading Menu");
+            SceneManager.LoadScene("Menu", LoadSceneMode.Single);
         }
     }
 }

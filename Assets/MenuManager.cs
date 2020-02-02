@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StartScreenManager : MonoBehaviour
+public class MenuManager : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -15,26 +15,27 @@ public class StartScreenManager : MonoBehaviour
     {
         if (Input.GetButton("X P1"))
         {
+            Debug.Log("P1 Joined");
             SharedData.player1Joined = true;
-            // TODO: Update the UI.
+            GameObject.FindGameObjectWithTag("P1 Selected").GetComponent<UnityEngine.UI.Image>().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
         }
 
         if (Input.GetButton("X P2"))
         {
             SharedData.player2Joined = true;
-            // TODO: Update the UI.
+            GameObject.FindGameObjectWithTag("P2 Selected").GetComponent<UnityEngine.UI.Image>().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
         }
 
         if (Input.GetButton("X P3"))
         {
             SharedData.player3Joined = true;
-            // TODO: Update the UI.
+            GameObject.FindGameObjectWithTag("P3 Selected").GetComponent<UnityEngine.UI.Image>().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
         }
 
         if (Input.GetButton("X P4"))
         {
             SharedData.player4Joined = true;
-            // TODO: Update the UI.
+            GameObject.FindGameObjectWithTag("P4 Selected").GetComponent<UnityEngine.UI.Image>().rectTransform.SetSizeWithCurrentAnchors(RectTransform.Axis.Horizontal, 200);
         }
 
         if (Input.GetButton("Start"))
@@ -49,5 +50,15 @@ public class StartScreenManager : MonoBehaviour
                 Debug.Log("At least one player has to join the game.");
             }
         }
+    }
+
+    public void Play()
+    {
+        SceneManager.LoadScene(1);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }
