@@ -23,25 +23,23 @@ public class ItemSpawner : MonoBehaviour
     public void SpawnItem(Item item, Vector3 position)
     {
         Debug.Log("SPAWNING: " + item.ToString());
-        GameObject gameObject = null;
-        switch(item){
-            case Item.Crown:
-                Debug.Log("Crown");
-                gameObject = crown;
-                break;
-            case Item.Fist:
-                Debug.Log("Fist");
-                gameObject = fist;
-                break;
-            case Item.Claw:
-                Debug.Log("Claw");
-                gameObject = claw;
-                break;
-        }
+        GameObject gameObject = crown;
+        // switch(item){
+        //     case Item.Crown:
+        //         gameObject = crown;
+        //         break;
+        //     case Item.Fist:
+        //         gameObject = fist;
+        //         break;
+        //     case Item.Claw:
+        //         gameObject = claw;
+        //         break;
+        // }
         Debug.Log(gameObject != null);
         if (gameObject != null){
             Debug.Log("object? " + gameObject.ToString());
-            Instantiate(gameObject, position, Quaternion.identity);
+            GameObject obj = Instantiate(gameObject, position, Quaternion.identity);
+            obj.GetComponent<Interactable>().giveItem = item;
         }
     }
 }

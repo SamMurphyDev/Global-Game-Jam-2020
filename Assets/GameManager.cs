@@ -35,7 +35,10 @@ public class GameManager : MonoBehaviour
             playerList[index - 1] = obj;
         }
 
-        itemSpawner.SpawnItem(Item.Crown, levelManagement.GetGameObjectSpawnLocation() + new Vector3(0, 1, 0));
+        var values = Enum.GetValues(typeof(Item));
+        foreach(Item item in values) {
+            itemSpawner.SpawnItem(item, levelManagement.GetGameObjectSpawnLocation() + new Vector3(0, 1, 0));
+        }
     }
 
     // Update is called once per frame
