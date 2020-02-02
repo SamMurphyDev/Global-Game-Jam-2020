@@ -45,3 +45,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crown: {fileID: 8596517170805609879, guid: c2e86e7e3a2dcee4d886db848f3e0af1, type: 3}
   fist: {fileID: 4716889331368085113, guid: 7fc8c05b459d70d4d9beca460f8683b8, type: 3}
+  claw: {fileID: 4716889331368085113, guid: c59545aaf16c8df408527433b903dacb, type: 3}

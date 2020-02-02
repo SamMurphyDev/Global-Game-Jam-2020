@@ -6,6 +6,7 @@ public class ItemSpawner : MonoBehaviour
 {
     public GameObject crown;
     public GameObject fist;
+    public GameObject claw;
 
     // Start is called before the first frame update
     void Start()
@@ -31,6 +32,10 @@ public class ItemSpawner : MonoBehaviour
             case Item.Fist:
                 Debug.Log("Fist");
                 gameObject = fist;
+                break;
+            case Item.Claw:
+                Debug.Log("Claw");
+                gameObject = claw;
                 break;
         }
         Debug.Log(gameObject != null);
